@@ -1,0 +1,134 @@
+﻿@model BusReserveSystem.Models.Reservation
+<div class="container" id ="newcus">
+  <h2>Seat Reservation</h2>
+  @*<form class="form-horizontal" role="form" method ="post" action ="../../Ticket/save">*@
+    @using (Html.BeginForm("../Ticket/save", "", FormMethod.Post,
+                                      new { @class = "form-horizontal" }))
+{
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Bus:</label>
+          <div class="col-sm-10">          
+              <label class="control-label col-sm-2" for="pwd">@ViewBag.bs.Name</label>
+              </div>
+          </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Source:</label>
+          <div class="col-sm-10">          
+              <label class="control-label col-sm-2" for="pwd">@Model.Source</label>
+              </div>
+          </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Destination:</label>
+          <div class="col-sm-10">          
+              <label class="control-label col-sm-2" for="pwd">@Model.Destination</label>
+              </div>
+          </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Reservation Date:</label>
+          <div class="col-sm-10">          
+              <label class="control-label col-sm-2" for="pwd">@Model.Date</label>
+              </div>
+          </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Time Slot:</label>
+          <div class="col-sm-10">          
+              <label class="control-label col-sm-2" for="pwd">@Model.TimeSlot</label>
+              </div>
+          </div>
+
+
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Total Tickets:</label>
+      <div class="col-sm-10">          
+        <select class="form-control" id ="tkt" name ="Total_Tickets" required>
+            
+            @for (int i = 1; i <= Model.Total_Tickets; i++)
+            {
+                <option value ="@i">@i</option>
+            }
+
+</select>
+      </div>
+    </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Total Bill:</label>
+          <div class="col-sm-10">          
+              
+              <label class="control-label col-sm-2" id ="bll" name ="TB" for="pwd">0</label>
+              <script>
+                  var i = $("#tkt").val();
+                 var bill = @Model.Total_Bill + (@Model.Total_Bill * ((@ViewBag.bs.Percentage) / 100));
+                  alert(bill);
+                  $("#bll").text(bill);
+
+                  $("#tkt").change(function () {
+                      var i = $("#tkt").val();
+                      
+                      alert(bill * parseInt(i));
+                      $("#bll").text(bill* parseInt(i));
+                      
+                  });
+              </script>
+              </div>
+          </div>
+
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Done Reservation</button>
+      </div>
+    </div>
+  @*</form>*@
+    }
+</div>
+
+
+@{ViewBag.Title = "New Ticket";}
+@section slide
+{
+<div>
+<img u="image" src="~/img/r1.jpg">
+<img u="thumb" src="~/img/r1.jpg">
+</div>
+<div>
+<img u="image" src="~/img/r2.jpg">
+<img u="thumb" src="~/img/r2.jpg">
+</div>
+<div>
+<img u="image" src="~/img/3.jpg">
+<img u="thumb" src="~/img/3.jpg">
+</div>
+<div>
+<img u="image" src="~/img/r3.png">
+<img u="thumb" src="~/img/r3.png">
+</div>
+<div>
+<img u="image" src="~/img/r4.gif">
+<img u="thumb" src="~/img/r4.gif">
+</div>
+<div>
+<img u="image" src="~/img/6.jpg">
+<img u="thumb" src="~/img/6.jpg">
+</div>
+<div>
+<img u="image" src="~/img/r5.gif">
+<img u="thumb" src="~/img/r5.gif">
+</div>
+<div>
+<img u="image" src="~/img/r6.jpg">
+<img u="thumb" src="~/img/r6.jpg">
+</div>
+ }
+
+
+
+
+@{
+    ViewBag.Title = "reserve";
+}

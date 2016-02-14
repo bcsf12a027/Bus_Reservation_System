@@ -1,0 +1,181 @@
+﻿@model List<BusReserveSystem.Models.StandardFare>   
+<div class="container" id ="abtus">
+  <div class="jumbotron">
+    <h1 style ="text-align:center">...We Can Help...</h1>
+    <p>MMM Reservation is a new way to manage your business that takes the hassle out of reservations & online payments.
+
+Over 60% of visitors to your website are there to check pricing, availability and make a booking. 
+34% of those are outside of normal business hours. Who’s getting the booking?</p>
+      <div class="center-block">
+              <a href ="../../Bus/bus"><input class ="btn btn-primary" type ="button" value ="Reserve Now" /></a>
+          </div>
+  </div>
+       </div>
+
+
+<section class="tour section-wrapper container">
+		<h2 class="section-title">
+			Find a Tour
+		</h2>
+		<p class="section-subtitle">
+			Where would you like to go?
+		</p>
+		<div class="row">
+			<div class="col-md-3 col-sm-6">
+				<form role="form" class="form-dropdown">
+					<div class="form-group">
+						<label for="sel1">Select list (select one):</label>
+						<select class="form-control border-radius" id="sel">
+							<option>Source</option>
+                            <option>Lahore</option>
+						</select>
+					</div>
+				</form>
+			</div>
+            <div class="col-md-3 col-sm-6">
+				<form role="form" class="form-dropdown">
+					<div class="form-group">
+						<label for="sel1">Select list (select one):</label>
+						<select class="form-control border-radius" id="sel1">
+							<option>Destination</option>
+                            <option>Lahore</option>
+							<option>Karachi</option>
+							<option>Islamabad</option>
+							<option>Quetta</option>
+                            <option>Peshawer</option>
+                            <option>Multan</option>
+						</select>
+					</div>
+				</form>
+			</div>
+
+			 <div class="col-md-3 col-sm-6">
+				<input type="submit" value="Search" id="Search" class="btn btn-default border-radius custom-button" />
+			</div>
+		</div>
+        <span id="ress" style="color:red ; font-size:15px"></span>
+	</section> <!-- /.tour -->
+
+<div class="container">
+
+
+
+    <h1 style ="text-align:center">...Standard Rates...</h1><br />
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+          <th>Sr#</th>
+        <th>Source</th>
+        <th>Destination</th>
+          <th>Price</th>
+      </tr>
+    </thead>
+    <tbody id="Tbody">
+        @foreach(var x in Model)
+        {
+             <tr>
+                <td>@x.Id</td>
+                <td>@x.Source</td>
+                  <td>@x.Destination</td>
+                  <td>@x.Price</td>
+              </tr>
+        }
+    </tbody>
+  </table>
+  </div>
+</div>
+
+
+<script>
+
+    $('#Search').on("click", function () {
+        debugger;
+        var s = $('#sel :selected').text();
+        var d = $('#sel1 :selected').text();
+        if ((s == "Source" && d == "Destination")) {
+            $('#ress').text('Both Fields are empty');
+        }
+        else {
+            if ((d == null && s == null)) {
+                $('#ress').text('Both Fields are empty');
+            }
+            else {
+                $("#Tbody").html("");
+
+                var Body = $('#Tbody');
+                $.ajax({
+                    url: '@Url.Action("search_Bus", "Home")',
+                        type: 'Get',
+                        contentType: 'application/json;charset-utf-8',
+                        data: { Dest: d, Source: s },
+                        success: function (data) {
+                            debugger;
+                            if (!data) {
+                                $('#ress').text('No Data found');
+                            }
+                            else {
+                                $.each(data, function (index, item) {
+                                    var user = '<tr> <td>' + item.Bus_No + '</td><td>' + item.Source + '</td><td>' + item.Destination + '</td><td>' + item.Price + '</td></tr>';
+                                    $('#Tbody').html(user);
+                                });
+                            }
+                        },
+                        error: function (data) {
+                            debugger;
+                            alert('Data does not exist');
+                        }
+                    });
+                }
+            }
+    });
+</script>
+
+@{ViewBag.Title = "Home";}
+@section slide
+{
+<div>
+<img u="image" src="~/img/1.jpg">
+<img u="thumb" src="~/img/1.jpg">
+</div>
+<div>
+<img u="image" src="~/img/2.jpg">
+<img u="thumb" src="~/img/2.jpg">
+</div>
+<div>
+<img u="image" src="~/img/3.jpg">
+<img u="thumb" src="~/img/3.jpg">
+</div>
+<div>
+<img u="image" src="~/img/4.jpg">
+<img u="thumb" src="~/img/4.jpg">
+</div>
+<div>
+<img u="image" src="~/img/5.jpg">
+<img u="thumb" src="~/img/5.jpg">
+</div>
+<div>
+<img u="image" src="~/img/6.jpg">
+<img u="thumb" src="~/img/6.jpg">
+</div>
+<div>
+<img u="image" src="~/img/7.jpg">
+<img u="thumb" src="~/img/7.jpg">
+</div>
+<div>
+<img u="image" src="~/img/8.jpg">
+<img u="thumb" src="~/img/8.jpg">
+</div>
+<div>
+<img u="image" src="~/img/9.jpg">
+<img u="thumb" src="~/img/9.jpg">
+</div>
+    <div>
+<img u="image" src="~/img/10.jpg">
+<img u="thumb" src="~/img/10.jpg">
+</div>
+    <div>
+<img u="image" src="~/img/11.jpg">
+<img u="thumb" src="~/img/11.jpg">
+</div>
+ }

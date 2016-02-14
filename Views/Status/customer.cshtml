@@ -1,0 +1,69 @@
+﻿@model BusReserveSystem.Models.Member
+   <div class="container" id ="abtus">
+  <div class="jumbotron">
+    <h1 style ="text-align:center">We Care our Customers…</h1>
+    <p>The goal of our company is to have customer service that is not just the best but legendary. The approaches in our customers have made a difference in our business. Winning with Customers has brought new life and energy to our selling approach.</p>
+  </div>
+       </div>
+
+    <div class="container" id ="newcus">
+  <h2>Customer Status</h2>
+  <form class="form-horizontal" role="form" method ="post" action ="../Status/ShowCustomerStatus">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">CNIC:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="cnic" placeholder="CNIC No" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" name="pwd" placeholder="Enter password" required/>
+      </div>
+    </div>
+    
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+@{ViewBag.Title = "Customer Status";}
+@section slide
+{
+<div>
+<img u="image" src="~/img/c1.jpg">
+<img u="thumb" src="~/img/c1.jpg">
+</div>
+<div>
+<img u="image" src="~/img/c2.jpg">
+<img u="thumb" src="~/img/c2.jpg">
+</div>
+<div>
+<img u="image" src="~/img/c4.jpg">
+<img u="thumb" src="~/img/c4.jpg">
+</div>
+<div>
+<img u="image" src="~/img/c5.jpg">
+<img u="thumb" src="~/img/c5.jpg">
+</div>
+<div>
+<img u="image" src="~/img/c6.jpg">
+<img u="thumb" src="~/img/c6.jpg">
+</div>
+<div>
+<img u="image" src="~/img/c7.jpg">
+<img u="thumb" src="~/img/c7.jpg">
+</div>
+<div>
+<img u="image" src="~/img/c8.jpg">
+<img u="thumb" src="~/img/c8.jpg">
+</div>
+<div>
+<img u="image" src="~/img/c9.jpg">
+<img u="thumb" src="~/img/c9.jpg">
+</div>
+    }
+

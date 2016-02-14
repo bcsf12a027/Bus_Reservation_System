@@ -1,0 +1,93 @@
+﻿@model List<BusReserveSystem.Models.Bus>
+<div class="container" id ="abtus">
+  <div class="jumbotron">
+    <h1 style ="text-align:center">...Traveling is Health...</h1>
+    <p>The world is a book, and those who do not travel read only a page. Travel inspires us more than anything else we do. Evidence of the languages, cultures, scenery, food, and design sensibilities that one discover all over the world can be found in every piece of his jewelry. If you wish to travel far and fast, travel light. Take off all your envies, jealousies, unforgiveness, selfishness and fears.</p>
+  </div>
+       </div>
+
+    <div class="row"> 
+      
+        <div class="row">
+            
+            @foreach (var x in Model)
+            {
+                <div class="col-sm-6 col-md-3">
+                    
+    <!-- normal -->
+    <div class="thumbnail ih-item square effect15 left_to_right"><a href="#">
+        <div class="img"><img src="@x.SourcePath" alt="img"></div>
+        <div class="info">
+          <h3>@x.Name</h3>
+          <p>@x.Description</p>
+            <h3>Rent: @x.Rent</h3>
+        </div></a></div>
+    <!-- end normal -->
+                    @Html.ActionLink("Reserve", "./../Ticket/reserve" ,new {Id=x.Id}, new { @class = "btn btn-primary btn-large"})
+            @*<a href="/Home/Edit/3">Edit Record</a>
+ <a href="../../Ticket/reserve/@x.Id" class="btn btn-primary" role="button"> Reserve </a> *@
+                    <a href="../../Home/view" class="btn btn-default" role="button"> View </a> 
+  </div>
+            }
+    </div>
+        </div>
+
+@{ViewBag.Title = "Bus";}
+@section s1{
+    <link href="../../Content/ihover.css" rel="stylesheet">
+<style>
+.thumbnail
+            {
+                width: 300px;
+                height: 240px;
+                overflow: auto;
+            }
+    </style>
+}
+@section slide
+{
+    <div>
+<img u="image" src="~/img/1.jpg">
+<img u="thumb" src="~/img/1.jpg">
+</div>
+<div>
+<img u="image" src="~/img/2.jpg">
+<img u="thumb" src="~/img/2.jpg">
+</div>
+<div>
+<img u="image" src="~/img/3.jpg">
+<img u="thumb" src="~/img/3.jpg">
+</div>
+<div>
+<img u="image" src="~/img/4.jpg">
+<img u="thumb" src="~/img/4.jpg">
+</div>
+<div>
+<img u="image" src="~/img/5.jpg">
+<img u="thumb" src="~/img/5.jpg">
+</div>
+<div>
+<img u="image" src="~/img/6.jpg">
+<img u="thumb" src="~/img/6.jpg">
+</div>
+<div>
+<img u="image" src="~/img/7.jpg">
+<img u="thumb" src="~/img/7.jpg">
+</div>
+<div>
+<img u="image" src="~/img/8.jpg">
+<img u="thumb" src="~/img/8.jpg">
+</div>
+<div>
+<img u="image" src="~/img/9.jpg">
+<img u="thumb" src="~/img/9.jpg">
+</div>
+    <div>
+<img u="image" src="~/img/10.jpg">
+<img u="thumb" src="~/img/10.jpg">
+</div>
+    <div>
+<img u="image" src="~/img/11.jpg">
+<img u="thumb" src="~/img/11.jpg">
+</div>
+}
